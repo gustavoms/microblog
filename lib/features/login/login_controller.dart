@@ -3,7 +3,7 @@ import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/login/data/login_entity.dart';
 import 'package:microblog/features/login/login_execute_use_case.dart';
-import 'package:microblog/features/login/login_parameters.dart';
+import 'package:microblog/features/login/data/login_parameters.dart';
 
 class LoginController extends BaseController<LoginParameters> {
   late final TextEditingController textUserController, textPasswordController;

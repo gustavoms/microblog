@@ -13,6 +13,12 @@ final Map<String, String> ptBR = {
   'input_error_empty_user': 'Por favor, preencha o seu usuário.',
   'input_error_empty_password': 'Por favor, preencha a sua senha.',
   'snackbar_error_title': 'Ooops! Algo deu errado.',
+  'signup_title': 'Cadastro',
+  'hint_input_password_second': 'Repita a senha',
+  'text_btn_create': 'Cadastrar',
+  'snackbar_success': 'Sucesso',
+  'snackbar_error': 'Erro',
+  'signup_successful': 'Cadastro realizado com sucesso!',
 };
 
 final Map<String, String> enUS = {
@@ -23,4 +29,10 @@ final Map<String, String> enUS = {
   'input_error_empty_user': 'Please, fill your user.',
   'input_error_empty_password': 'Please, fill your password.',
   'snackbar_error_title': 'Ooops! Something went wrong.',
+  'signup_title': 'Signup',
+  'hint_input_password_second': 'Repeat password',
+  'text_btn_create': 'Create',
+  'snackbar_success': 'Success',
+  'snackbar_error': 'Error',
+  'signup_successful': 'Signup successful!',
 };
