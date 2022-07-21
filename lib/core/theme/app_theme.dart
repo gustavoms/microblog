@@ -7,3 +7,6 @@ final ThemeData appThemeData = ThemeData(
     headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
   ),
 );
+
+const kDefPadding = 8.0;
+const kDefMargin = 8.0;
