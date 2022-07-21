@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
+import 'package:microblog/core/shared/global_actions.dart';
+import 'package:microblog/features/login/data/login_entity.dart';
+import 'package:microblog/features/login/login_execute_use_case.dart';
 import 'package:microblog/features/login/login_parameters.dart';
 
 class LoginController extends BaseController<LoginParameters> {
   late final TextEditingController textUserController, textPasswordController;
 
+  final LoginExecuteUseCase loginExecuteUseCase;
+
   LoginController({
     required router,
+    required this.loginExecuteUseCase,
   }) : super(router: router);
 
   @override
@@ -25,8 +30,23 @@ class LoginController extends BaseController<LoginParameters> {
   }
 
   Future<void> onLogin() async {
-    await router.startHomePage(
-      off: true,
+    (await loginExecuteUseCase(
+      data: LoginEntity(
+        user: textUserController.text.trim(),
+        password: textPasswordController.text.trim(),
+      ),
+    ))
+        .fold(
+      (l) => showSnackbarError(
+        message: l.cause,
+      ),
+      (r) async {
+        if (r.success) {
+          await router.startHomePage(
+            off: true,
+          );
+        }
+      },
     );
   }
 
