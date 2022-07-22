@@ -9,6 +9,7 @@ import 'package:microblog/features/signup/signup_execute_use_case.dart';
 class SignupController extends BaseController<SignupParameters> {
   late final TextEditingController textUserController,
       textPasswordController,
+      textPasswordConfirmController,
       textEmailController;
 
   final SignupExecuteUseCase signupExecuteUseCase;
@@ -22,6 +23,7 @@ class SignupController extends BaseController<SignupParameters> {
   void onInit() {
     textUserController = TextEditingController();
     textPasswordController = TextEditingController();
+    textPasswordConfirmController = TextEditingController();
     textEmailController = TextEditingController();
     super.onInit();
   }
@@ -31,6 +33,7 @@ class SignupController extends BaseController<SignupParameters> {
     textUserController.dispose();
     textPasswordController.dispose();
     textEmailController.dispose();
+    textPasswordConfirmController.dispose();
     super.onClose();
   }
 

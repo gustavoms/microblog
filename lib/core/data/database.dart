@@ -2,13 +2,8 @@ import 'package:sqflite/sqflite.dart';
 
 class MicroblogDatabase {
   late Database _database;
-  Database get instance => _database;
 
-  MicroblogDatabase() {
-    _getInstance();
-  }
-
-  Future<void> _getInstance() async {
+  Future<Database> getInstance() async {
     var databasesPath = await getDatabasesPath();
     String path = databasesPath + "microblog.db";
 
@@ -25,6 +20,7 @@ class MicroblogDatabase {
     });
 
     _database = database;
+    return database;
   }
 
   Future<void> close() async {

@@ -19,6 +19,11 @@ final Map<String, String> ptBR = {
   'snackbar_success': 'Sucesso',
   'snackbar_error': 'Erro',
   'signup_successful': 'Cadastro realizado com sucesso!',
+  'input_error_password_not_match': 'As senhas não conferem.',
+  'email_already_exists': 'O e-mail já está cadastrado.',
+  'user_already_exists': 'O usuário já está cadastrado.',
+  'hint_input_email': 'E-mail',
+  'input_error_invalid_email': 'Por favor, preencha um e-mail válido.',
 };
 
 final Map<String, String> enUS = {
@@ -35,4 +40,9 @@ final Map<String, String> enUS = {
   'snackbar_success': 'Success',
   'snackbar_error': 'Error',
   'signup_successful': 'Signup successful!',
+  'input_error_password_not_match': 'Passwords do not match.',
+  'email_already_exists': 'The email already exists.',
+  'user_already_exists': 'The user already exists.',
+  'hint_input_email': 'Email',
+  'input_error_invalid_email': 'Please, fill a valid email.',
 };

@@ -44,16 +44,18 @@ class SignupPage extends BasePage<SignupController> {
                       ),
                       CustomTextFormField(
                         hintText: 'hint_input_email'.tr,
-                        textEditingController:
-                            controller.textPasswordController,
+                        textEditingController: controller.textEmailController,
                         validator: (value) {
                           if ((value ?? '').isEmpty) {
                             return 'input_error_empty_email'.tr;
                           }
 
+                          if (!GetUtils.isEmail(value ?? '')) {
+                            return 'input_error_invalid_email'.tr;
+                          }
+
                           return null;
                         },
-                        obscureText: true,
                       ),
                       CustomTextFormField(
                         hintText: 'hint_input_password'.tr,
@@ -64,6 +66,11 @@ class SignupPage extends BasePage<SignupController> {
                             return 'input_error_empty_password'.tr;
                           }
 
+                          if (controller.textPasswordConfirmController.text !=
+                              value) {
+                            return 'input_error_password_not_match'.tr;
+                          }
+
                           return null;
                         },
                         obscureText: true,
@@ -71,10 +78,14 @@ class SignupPage extends BasePage<SignupController> {
                       CustomTextFormField(
                         hintText: 'hint_input_password_second'.tr,
                         textEditingController:
-                            controller.textPasswordController,
+                            controller.textPasswordConfirmController,
                         validator: (value) {
                           if ((value ?? '').isEmpty) {
                             return 'input_error_empty_password'.tr;
+                          }
+
+                          if (controller.textPasswordController.text != value) {
+                            return 'input_error_password_not_match'.tr;
                           }
 
                           return null;
@@ -94,7 +105,9 @@ class SignupPage extends BasePage<SignupController> {
                         Expanded(
                           child: CustomButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {}
+                              if (_formKey.currentState!.validate()) {
+                                controller.onSignup();
+                              }
                             },
                             text: 'text_btn_create'.tr,
                           ),
