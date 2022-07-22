@@ -24,6 +24,7 @@ final Map<String, String> ptBR = {
   'user_already_exists': 'O usuário já está cadastrado.',
   'hint_input_email': 'E-mail',
   'input_error_invalid_email': 'Por favor, preencha um e-mail válido.',
+  'invalid_credentials': 'Usuário ou senha inválidos.',
 };
 
 final Map<String, String> enUS = {
@@ -45,4 +46,5 @@ final Map<String, String> enUS = {
   'user_already_exists': 'The user already exists.',
   'hint_input_email': 'Email',
   'input_error_invalid_email': 'Please, fill a valid email.',
+  'invalid_credentials': 'Invalid credentials.',
 };
