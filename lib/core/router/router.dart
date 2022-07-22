@@ -11,6 +11,12 @@ abstract class IRouter {
   Future<TReturnType> startLoginPage<TReturnType>({
     bool off = false,
   });
+  Future<TReturnType> startFeed<TReturnType>({
+    bool off = false,
+  });
+  Future<TReturnType> startNews<TReturnType>({
+    bool off = false,
+  });
   Future<void> goBack<TReturnType>({
     TReturnType? result,
     bool closeOverlays = false,
@@ -67,6 +73,36 @@ class RouterImpl implements IRouter {
 
     return await Get.toNamed(
       Routes.LOGIN,
+    );
+  }
+
+  @override
+  Future<TReturnType> startFeed<TReturnType>({bool off = false}) async {
+    if (off) {
+      return await Get.offNamed(
+        Routes.FEED,
+        id: Routes.KEY_NAVIGATION_HOME,
+      );
+    }
+
+    return await Get.toNamed(
+      Routes.FEED,
+      id: Routes.KEY_NAVIGATION_HOME,
+    );
+  }
+
+  @override
+  Future<TReturnType> startNews<TReturnType>({bool off = false}) async {
+    if (off) {
+      return await Get.offNamed(
+        Routes.NEWS,
+        id: Routes.KEY_NAVIGATION_HOME,
+      );
+    }
+
+    return await Get.toNamed(
+      Routes.NEWS,
+      id: Routes.KEY_NAVIGATION_HOME,
     );
   }
 }
