@@ -15,7 +15,10 @@ class HomePage extends BasePage<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        elevation: 0,
+        title: Center(
+          child: Text('app_title'.tr),
+        ),
       ),
       body: Navigator(
         key: Get.nestedKey(Routes.KEY_NAVIGATION_HOME),
