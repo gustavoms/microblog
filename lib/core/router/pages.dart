@@ -3,6 +3,8 @@ import 'package:microblog/features/home/home_binding.dart';
 import 'package:microblog/features/home/home_page.dart';
 import 'package:microblog/features/login/login_binding.dart';
 import 'package:microblog/features/login/login_page.dart';
+import 'package:microblog/features/signup/signup_binding.dart';
+import 'package:microblog/features/signup/signup_page.dart';
 part './routes.dart';
 
 abstract class AppPages {
@@ -16,6 +18,11 @@ abstract class AppPages {
       name: Routes.LOGIN,
       page: () => LoginPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: Routes.SIGNUP,
+      page: () => SignupPage(),
+      binding: SignupBinding(),
     ),
   ];
 }
