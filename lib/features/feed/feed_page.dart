@@ -8,8 +8,22 @@ class FeedPage extends BasePage<FeedController> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('feed_page_title'.tr),
+    return Obx(
+      () => ListView.builder(
+        itemBuilder: (context, i) {
+          final item = controller.feedPosts[i];
+          return Card(
+            child: Column(
+              children: [
+                Text(
+                  item.message,
+                ),
+              ],
+            ),
+          );
+        },
+        itemCount: controller.feedPosts.length,
+      ),
     );
   }
 }
