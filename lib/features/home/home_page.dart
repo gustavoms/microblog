@@ -20,6 +20,25 @@ class HomePage extends BasePage<HomeController> {
           child: Text('app_title'.tr),
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              padding: EdgeInsets.zero,
+              child: UserAccountsDrawerHeader(
+                currentAccountPicture: const CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    'https://avatars3.githubusercontent.com/u/17098981?s=460&v=4',
+                  ),
+                ),
+                accountName: Obx(() => Text(controller.userName)),
+                accountEmail: Obx(() => Text(controller.userEmail)),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Navigator(
         key: Get.nestedKey(Routes.KEY_NAVIGATION_HOME),
         initialRoute: Routes.FEED,

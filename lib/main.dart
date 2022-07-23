@@ -5,8 +5,9 @@ import 'package:microblog/core/shared/global_bindings.dart';
 import 'package:microblog/core/theme/app_theme.dart';
 import 'package:microblog/core/translations/text_translations.dart';
 
-void main() {
-  GlobalBinding().dependencies();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GlobalBinding().dependencies();
 
   runApp(
     GetMaterialApp(

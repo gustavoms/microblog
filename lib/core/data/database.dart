@@ -17,6 +17,7 @@ class MicroblogDatabase {
       await db.execute(
         'CREATE TABLE post (id INTEGER PRIMARY KEY, user_id INTEGER, post TEXT, date TEXT, FOREIGN KEY(user_id) REFERENCES artist(id));',
       );
+
       await db.execute(
           "insert into user (name, email, password) values ('João S. S.', 'joaodasilva@gmail.com', 'a1b2c3d4')");
       await db.execute(

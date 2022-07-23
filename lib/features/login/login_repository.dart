@@ -50,6 +50,8 @@ class LoginRepository implements ILoginRepository {
       return right(
         LoginResponse(
           success: true,
+          user: (byUsername[0]['name'] ?? byEmail[0]['name']).toString(),
+          email: (byUsername[0]['email'] ?? byEmail[0]['email']).toString(),
         ),
       );
     } on Exception catch (e) {
