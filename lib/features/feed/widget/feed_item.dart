@@ -23,7 +23,6 @@ class FeedItem extends StatelessWidget {
               Row(
                 children: [
                   CircleAvatar(
-                    key: GlobalKey(),
                     backgroundImage: NetworkImage(item.photo),
                   ),
                   const SizedBox(

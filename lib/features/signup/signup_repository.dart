@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
 import 'package:microblog/core/data/database.dart';
 import 'package:microblog/features/signup/data/signup_request.dart';
 import 'package:microblog/features/signup/data/signup_response.dart';

@@ -28,6 +28,7 @@ final Map<String, String> ptBR = {
   'bottom_navigation_feed_title': 'Feed',
   'bottom_navigation_news_title': 'Notícias',
   'app_title': 'Microblog',
+  'error_occurred': 'Ocorreu um erro',
 };
 
 final Map<String, String> enUS = {
@@ -53,4 +54,5 @@ final Map<String, String> enUS = {
   'bottom_navigation_feed_title': 'Feed',
   'bottom_navigation_news_title': 'News',
   'app_title': 'Microblog',
+  'error_occurred': 'An error occurred.',
 };

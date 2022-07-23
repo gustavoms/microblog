@@ -13,8 +13,6 @@ class LoginPage extends BasePage<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: SafeArea(
         child: Center(
