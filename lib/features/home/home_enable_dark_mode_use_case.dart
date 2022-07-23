@@ -11,15 +11,23 @@ class HomeEnableDarkModeUseCase {
     required this.storage,
   });
 
-  Future<Either<HomeEnableDarkModeException, bool>> call() async {
+  Future<Either<HomeEnableDarkModeException, bool>> call({
+    bool? enable,
+  }) async {
     try {
+      if (enable != null) {
+        await storage.setDarkMode(enable);
+      }
+
       final darkMode = await storage.isDarkMode();
 
       if (darkMode) {
         Get.changeTheme(ThemeData.dark());
+        return right(true);
       }
 
-      return right(darkMode);
+      Get.changeTheme(ThemeData.light());
+      return right(false);
     } on Exception catch (e) {
       return Left(
         HomeEnableDarkModeException(

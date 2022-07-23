@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/data/storage.dart';
+import 'package:microblog/core/shared/global_actions.dart';
+import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/home/home_parameters.dart';
 
 class HomeController extends BaseController<HomeParameters> {
@@ -16,17 +18,25 @@ class HomeController extends BaseController<HomeParameters> {
   set userEmail(value) => _userEmail.value = value;
   get userEmail => _userEmail.value;
 
+  final _darkMode = false.obs;
+  set darkMode(value) => _darkMode.value = value;
+  get darkMode => _darkMode.value;
+
   final Storage storage;
+
+  final HomeEnableDarkModeUseCase homeEnableDarkModeUseCase;
 
   HomeController({
     required router,
     required this.storage,
+    required this.homeEnableDarkModeUseCase,
   }) : super(router: router);
 
   @override
   onReady() async {
     userName = await storage.getUserName();
     userEmail = await storage.getUserEmail();
+    darkMode = parameters?.darkMode;
     super.onReady();
   }
 
@@ -44,5 +54,17 @@ class HomeController extends BaseController<HomeParameters> {
         await router.startFeed();
         break;
     }
+  }
+
+  changeDarkMode(value) async {
+    (await homeEnableDarkModeUseCase(
+      enable: value,
+    ))
+        .fold(
+      (l) => showSnackbarError(message: l.cause),
+      (r) => {
+        darkMode = r,
+      },
+    );
   }
 }

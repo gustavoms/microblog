@@ -5,23 +5,29 @@ import 'package:microblog/features/feed/feed_controller.dart';
 import 'package:microblog/features/feed/widget/feed_item.dart';
 
 class FeedPage extends BasePage<FeedController> {
-  const FeedPage({Key? key}) : super(key: key);
+  const FeedPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: controller.reload,
       child: Obx(
-        () => ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, i) {
-            final item = controller.feedPosts[i];
-            return FeedItem(
-              item: item,
-            );
-          },
-          itemCount: controller.feedPosts.length,
-        ),
+        () => controller.loading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, i) {
+                  final item = controller.feedPosts[i];
+                  return FeedItem(
+                    item: item,
+                  );
+                },
+                itemCount: controller.feedPosts.length,
+              ),
       ),
     );
   }

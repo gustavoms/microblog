@@ -26,11 +26,16 @@ class NewsController extends BaseController<NewsParameters> {
   }
 
   Future<void> reload() async {
+    loading = true;
     (await newsFindAllUseCase(data: NewsRequest())).fold(
-      (l) => showSnackbarError(
-        message: l.cause,
-      ),
+      (l) {
+        loading = false;
+        showSnackbarError(
+          message: l.cause,
+        );
+      },
       (r) {
+        loading = false;
         news.clear();
         news.addAll(r);
       },

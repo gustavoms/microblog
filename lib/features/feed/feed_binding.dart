@@ -10,12 +10,13 @@ class FeedBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<FeedController>(
       () => FeedController(
-          router: RouterImpl(),
-          feedLoadUseCase: FeedLoadUseCase(
-            repository: FeedRepository(
-              database: MicroblogDatabase(),
-            ),
-          )),
+        router: RouterImpl(),
+        feedLoadUseCase: FeedLoadUseCase(
+          repository: FeedRepository(
+            database: MicroblogDatabase(),
+          ),
+        ),
+      ),
     );
   }
 }

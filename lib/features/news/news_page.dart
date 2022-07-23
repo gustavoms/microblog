@@ -15,15 +15,19 @@ class NewsPage extends BasePage<NewsController> {
       child: Padding(
         padding: const EdgeInsets.all(kDefPadding),
         child: Obx(
-          () => ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            separatorBuilder: (context, i) => const Divider(),
-            itemBuilder: (context, i) {
-              final item = controller.news[i];
-              return NewsItem(item: item);
-            },
-            itemCount: controller.news.length,
-          ),
+          () => controller.loading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  separatorBuilder: (context, i) => const Divider(),
+                  itemBuilder: (context, i) {
+                    final item = controller.news[i];
+                    return NewsItem(item: item);
+                  },
+                  itemCount: controller.news.length,
+                ),
         ),
       ),
     );

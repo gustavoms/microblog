@@ -26,9 +26,14 @@ class FeedController extends BaseController<FeedParameters> {
   }
 
   Future<void> reload() async {
+    loading = true;
     (await feedLoadUseCase(data: FeedRequest())).fold(
-      (l) => showSnackbarError(message: l.cause),
+      (l) {
+        loading = false;
+        showSnackbarError(message: l.cause);
+      },
       (r) {
+        loading = false;
         feedPosts.clear();
         feedPosts.addAll(r.posts);
       },

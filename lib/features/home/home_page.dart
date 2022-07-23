@@ -5,38 +5,28 @@ import 'package:microblog/core/router/pages.dart';
 import 'package:microblog/features/feed/feed_binding.dart';
 import 'package:microblog/features/feed/feed_page.dart';
 import 'package:microblog/features/home/home_controller.dart';
+import 'package:microblog/features/home/widgets/drawer_menu.dart';
 import 'package:microblog/features/news/news_binding.dart';
 import 'package:microblog/features/news/news_page.dart';
 
 class HomePage extends BasePage<HomeController> {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Center(
-          child: Text('app_title'.tr),
-        ),
+        title: Text('app_title'.tr),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              padding: EdgeInsets.zero,
-              child: UserAccountsDrawerHeader(
-                currentAccountPicture: const CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://avatars3.githubusercontent.com/u/17098981?s=460&v=4',
-                  ),
-                ),
-                accountName: Obx(() => Text(controller.userName)),
-                accountEmail: Obx(() => Text(controller.userEmail)),
-              ),
-            ),
-          ],
+      drawer: Obx(
+        () => HomeDrawer(
+          userName: controller.userName,
+          userEmail: controller.userEmail,
+          onChangedDarkMode: (value) => controller.changeDarkMode(value),
+          darkMode: controller.darkMode,
         ),
       ),
       body: Navigator(
