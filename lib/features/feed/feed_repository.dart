@@ -24,7 +24,7 @@ class FeedRepository extends IFeedRepository {
   }) async {
     try {
       final posts = await (await database.getInstance()).rawQuery(
-        'SELECT * FROM post p left join user u on u.id = p.user_id order by p.data',
+        'SELECT * FROM post p left join user u on u.id = p.user_id order by p.date desc',
       );
 
       return right(
@@ -38,7 +38,8 @@ class FeedRepository extends IFeedRepository {
                       ) ??
                       DateTime.now(),
                   message: e['post'].toString(),
-                  photo: 'https://picsum.photos/200/300',
+                  photo:
+                      'https://picsum.photos/id/${(int.tryParse(e['id'].toString()) ?? 1) * 5}/200',
                 ),
               )
               .toList(),

@@ -21,6 +21,11 @@ class FeedController extends BaseController<FeedParameters> {
 
   @override
   void onReady() async {
+    await reload();
+    super.onReady();
+  }
+
+  Future<void> reload() async {
     (await feedLoadUseCase(data: FeedRequest())).fold(
       (l) => showSnackbarError(message: l.cause),
       (r) {
@@ -28,6 +33,5 @@ class FeedController extends BaseController<FeedParameters> {
         feedPosts.addAll(r.posts);
       },
     );
-    super.onReady();
   }
 }
