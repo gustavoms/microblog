@@ -3,6 +3,7 @@ import 'package:microblog/core/router/pages.dart';
 import 'package:microblog/features/feed/data/feed_parameters.dart';
 import 'package:microblog/features/home/home_parameters.dart';
 import 'package:microblog/features/news/data/news_parameters.dart';
+import 'package:microblog/features/post/data/post_parameters.dart';
 
 abstract class IRouter {
   Future<TReturnType> startSignupPage<TReturnType>({
@@ -14,6 +15,10 @@ abstract class IRouter {
   });
   Future<TReturnType> startLoginPage<TReturnType>({
     bool off = false,
+  });
+  Future<TReturnType> startPostPage<TReturnType>({
+    bool off = false,
+    required PostParameters parameters,
   });
   Future<TReturnType> startFeed<TReturnType>({
     bool off = false,
@@ -128,6 +133,24 @@ class RouterImpl implements IRouter {
       Routes.NEWS,
       id: Routes.KEY_NAVIGATION_HOME,
       arguments: parameters ?? NewsParameters(),
+    );
+  }
+
+  @override
+  Future<TReturnType> startPostPage<TReturnType>({
+    bool off = false,
+    required PostParameters parameters,
+  }) async {
+    if (off) {
+      return await Get.offNamed(
+        Routes.POST,
+        arguments: parameters,
+      );
+    }
+
+    return await Get.toNamed(
+      Routes.POST,
+      arguments: parameters,
     );
   }
 }

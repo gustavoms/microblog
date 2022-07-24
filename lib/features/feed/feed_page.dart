@@ -24,6 +24,8 @@ class FeedPage extends BasePage<FeedController> {
                   final item = controller.feedPosts[i];
                   return FeedItem(
                     item: item,
+                    currentUserId: controller.currentUserId,
+                    onTap: () => controller.editPost(item: item),
                   );
                 },
                 itemCount: controller.feedPosts.length,
