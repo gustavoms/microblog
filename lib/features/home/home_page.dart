@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_page.dart';
 import 'package:microblog/core/router/pages.dart';
+import 'package:microblog/core/shared/assets_const.dart';
 import 'package:microblog/features/feed/feed_binding.dart';
 import 'package:microblog/features/feed/feed_page.dart';
 import 'package:microblog/features/home/home_controller.dart';
@@ -19,7 +20,10 @@ class HomePage extends BasePage<HomeController> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('app_title'.tr),
+        title: Image.asset(
+          assetsLogoWhite,
+          width: 210,
+        ),
       ),
       drawer: Obx(
         () => HomeDrawer(

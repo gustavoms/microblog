@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
+import 'package:microblog/core/shared/assets_const.dart';
 import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/home/home_parameters.dart';
@@ -9,6 +11,10 @@ import 'package:microblog/features/login/data/login_parameters.dart';
 
 class LoginController extends BaseController<LoginParameters> {
   late final TextEditingController textUserController, textPasswordController;
+
+  final _assetLogo = ''.obs;
+  set assetLogo(value) => _assetLogo.value = value;
+  get assetLogo => _assetLogo.value;
 
   final LoginExecuteUseCase loginExecuteUseCase;
   final HomeEnableDarkModeUseCase homeEnableDarkModeUseCase;
@@ -38,7 +44,10 @@ class LoginController extends BaseController<LoginParameters> {
   onReady() async {
     (await homeEnableDarkModeUseCase()).fold(
       (l) => showSnackbarError(message: l.cause),
-      (r) => darkMode = r,
+      (r) {
+        darkMode = r;
+        assetLogo = r ? assetsLogoWhite : assetsLogo;
+      },
     );
     super.onReady();
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_page.dart';
+import 'package:microblog/core/shared/assets_const.dart';
 import 'package:microblog/core/shared/widgets/custom_button.dart';
 import 'package:microblog/core/shared/widgets/custom_text_form_field.dart';
 import 'package:microblog/core/theme/app_theme.dart';
@@ -28,6 +29,11 @@ class LoginPage extends BasePage<LoginController> {
                       padding: const EdgeInsets.all(kDefPadding),
                       child: Column(
                         children: [
+                          Obx(
+                            () => Image.asset(
+                              controller.assetLogo,
+                            ),
+                          ),
                           CustomTextFormField(
                             hintText: 'hint_input_user'.tr,
                             textEditingController:
