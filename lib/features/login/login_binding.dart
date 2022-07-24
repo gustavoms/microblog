@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:microblog/core/data/database.dart';
 import 'package:microblog/core/router/router.dart';
+import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/login/login_controller.dart';
 import 'package:microblog/features/login/login_execute_use_case.dart';
 import 'package:microblog/features/login/login_repository.dart';
@@ -15,6 +16,10 @@ class LoginBinding implements Bindings {
           repository: LoginRepository(
             database: MicroblogDatabase(),
           ),
+          storage: Get.find(),
+        ),
+        homeEnableDarkModeUseCase: HomeEnableDarkModeUseCase(
+          storage: Get.find(),
         ),
       ),
     );

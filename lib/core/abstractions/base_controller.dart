@@ -2,11 +2,14 @@ import 'package:get/get.dart';
 import 'package:microblog/core/router/router.dart';
 
 abstract class BaseController<TParams> extends GetxController {
-  late final TParams? parameters;
+  TParams get parameters => Get.arguments;
+
   final IRouter router;
   BaseController({
     required this.router,
-  }) {
-    parameters = Get.arguments;
-  }
+  });
+
+  final _loading = false.obs;
+  set loading(value) => _loading.value = value;
+  get loading => _loading.value;
 }

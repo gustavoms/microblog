@@ -27,6 +27,9 @@ final Map<String, String> ptBR = {
   'invalid_credentials': 'Usuário ou senha inválidos.',
   'bottom_navigation_feed_title': 'Feed',
   'bottom_navigation_news_title': 'Notícias',
+  'app_title': 'Microblog',
+  'error_occurred': 'Ocorreu um erro',
+  'menu_dark_mode_option': 'Modo noturno',
 };
 
 final Map<String, String> enUS = {
@@ -51,4 +54,7 @@ final Map<String, String> enUS = {
   'invalid_credentials': 'Invalid credentials.',
   'bottom_navigation_feed_title': 'Feed',
   'bottom_navigation_news_title': 'News',
+  'app_title': 'Microblog',
+  'error_occurred': 'An error occurred.',
+  'menu_dark_mode_option': 'Dark mode',
 };

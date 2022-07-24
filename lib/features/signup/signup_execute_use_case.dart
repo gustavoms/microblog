@@ -1,10 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
-import 'package:microblog/features/login/data/login_entity.dart';
-import 'package:microblog/features/login/data/login_request.dart';
-import 'package:microblog/features/login/data/login_response.dart';
-import 'package:microblog/features/login/exceptions/login_execute_exception.dart';
-import 'package:microblog/features/login/login_repository.dart';
 import 'package:microblog/features/signup/data/signup_entity.dart';
 import 'package:microblog/features/signup/data/signup_request.dart';
 import 'package:microblog/features/signup/data/signup_response.dart';

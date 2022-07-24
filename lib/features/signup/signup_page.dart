@@ -13,8 +13,6 @@ class SignupPage extends BasePage<SignupController> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('signup_title'.tr),

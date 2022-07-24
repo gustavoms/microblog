@@ -5,17 +5,29 @@ import 'package:microblog/core/router/pages.dart';
 import 'package:microblog/features/feed/feed_binding.dart';
 import 'package:microblog/features/feed/feed_page.dart';
 import 'package:microblog/features/home/home_controller.dart';
+import 'package:microblog/features/home/widgets/drawer_menu.dart';
 import 'package:microblog/features/news/news_binding.dart';
 import 'package:microblog/features/news/news_page.dart';
 
 class HomePage extends BasePage<HomeController> {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        elevation: 0,
+        title: Text('app_title'.tr),
+      ),
+      drawer: Obx(
+        () => HomeDrawer(
+          userName: controller.userName,
+          userEmail: controller.userEmail,
+          onChangedDarkMode: (value) => controller.changeDarkMode(value),
+          darkMode: controller.darkMode,
+        ),
       ),
       body: Navigator(
         key: Get.nestedKey(Routes.KEY_NAVIGATION_HOME),
