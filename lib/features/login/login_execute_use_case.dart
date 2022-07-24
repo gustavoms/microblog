@@ -30,6 +30,7 @@ class LoginExecuteUseCase {
       (r) async {
         await storage.setUserName(r.user);
         await storage.setUserEmail(r.email);
+        await storage.setUserId(r.id);
       },
     );
 

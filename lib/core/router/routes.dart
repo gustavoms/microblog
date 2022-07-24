@@ -10,4 +10,5 @@ abstract class Routes {
   static const SIGNUP = '/signup';
   static const FEED = '/feed';
   static const NEWS = '/news';
+  static const POST = '/post';
 }

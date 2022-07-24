@@ -11,6 +11,14 @@ class Storage {
     await storage.write('isDarkMode', value);
   }
 
+  Future<void> setUserId(int value) async {
+    await storage.write('userId', value);
+  }
+
+  Future<int> getUserId() async {
+    return await storage.read('userId') ?? 0;
+  }
+
   Future<void> setUserName(String value) async {
     await storage.write('userName', value);
   }

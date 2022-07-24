@@ -52,6 +52,9 @@ class LoginRepository implements ILoginRepository {
           success: true,
           user: (byUsername[0]['name'] ?? byEmail[0]['name']).toString(),
           email: (byUsername[0]['email'] ?? byEmail[0]['email']).toString(),
+          id: int.tryParse(
+                  (byUsername[0]['id'] ?? byEmail[0]['id']).toString()) ??
+              0,
         ),
       );
     } on Exception catch (e) {

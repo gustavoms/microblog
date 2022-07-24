@@ -4,6 +4,7 @@ import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/home/home_parameters.dart';
+import 'package:microblog/features/post/data/post_parameters.dart';
 
 class HomeController extends BaseController<HomeParameters> {
   final _bottomNavigationIndex = 0.obs;
@@ -65,6 +66,12 @@ class HomeController extends BaseController<HomeParameters> {
       (r) => {
         darkMode = r,
       },
+    );
+  }
+
+  Future<void> startCreatePost() async {
+    await router.startPostPage(
+      parameters: PostParameters(),
     );
   }
 }

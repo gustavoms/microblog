@@ -68,7 +68,7 @@ class HomePage extends BasePage<HomeController> {
           duration: const Duration(milliseconds: 100),
           child: controller.bottomNavigationIndex == 0
               ? FloatingActionButton(
-                  onPressed: () => {},
+                  onPressed: () => controller.startCreatePost(),
                   child: const Icon(Icons.add),
                 )
               : null,

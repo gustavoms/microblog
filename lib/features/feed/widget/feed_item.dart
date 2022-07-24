@@ -5,10 +5,12 @@ import 'package:microblog/features/feed/data/feed_entity.dart';
 
 class FeedItem extends StatelessWidget {
   final FeedEntity item;
+  final int currentUserId;
 
   const FeedItem({
     Key? key,
     required this.item,
+    required this.currentUserId,
   }) : super(key: key);
 
   @override
@@ -19,18 +21,29 @@ class FeedItem extends StatelessWidget {
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(item.photo),
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(item.photo),
+                    ),
+                    const SizedBox(
+                      width: kDefMargin,
+                    ),
+                    Text(
+                      item.user,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  width: kDefMargin,
-                ),
-                Text(
-                  item.user,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                Visibility(
+                  visible: currentUserId == item.userId,
+                  child: const Icon(
+                    Icons.edit,
                   ),
                 ),
               ],

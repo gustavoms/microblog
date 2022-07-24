@@ -1,4 +1,4 @@
-class FeedEntity {
+class PostEntity {
   final int id;
   final int userId;
   final String user;
@@ -6,7 +6,7 @@ class FeedEntity {
   final String photo;
   final String message;
 
-  FeedEntity({
+  PostEntity({
     required this.id,
     required this.userId,
     required this.user,
