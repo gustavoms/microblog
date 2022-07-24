@@ -53,16 +53,36 @@ class PostPage extends BasePage<PostController> {
                 padding: const EdgeInsets.all(kDefPadding),
                 child: Column(
                   children: [
+                    Visibility(
+                      visible: controller.parameters.isEditing,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: CustomButton(
+                              color: Colors.red,
+                              onPressed: () {
+                                controller.deletePost();
+                              },
+                              text: 'text_btn_delete'.tr,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Row(
                       children: [
                         Expanded(
                           child: CustomButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                controller.save();
+                                controller.parameters.isEditing
+                                    ? controller.updatePost()
+                                    : controller.createPost();
                               }
                             },
-                            text: 'text_btn_create'.tr,
+                            text: controller.parameters.isEditing
+                                ? 'text_btn_update'.tr
+                                : 'text_btn_create'.tr,
                           ),
                         ),
                       ],

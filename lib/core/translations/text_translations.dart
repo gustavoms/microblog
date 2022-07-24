@@ -33,6 +33,11 @@ final Map<String, String> ptBR = {
   'post_title': 'Postar',
   'hint_post_message': 'Digite sua mensagem',
   'input_error_empty_post_message': 'Por favor, digite sua mensagem.',
+  'message_post_created': 'Post registrado!',
+  'message_post_updated': 'Post atualizado!',
+  'message_post_deleted': 'Post deletado!',
+  'text_btn_update': 'Atualizar',
+  'text_btn_delete': 'Deletar',
 };
 
 final Map<String, String> enUS = {
@@ -63,4 +68,9 @@ final Map<String, String> enUS = {
   'post_title': 'Post',
   'hint_post_message': 'Write your message',
   'input_error_empty_post_message': 'Please, fill your message.',
+  'message_post_created': 'Post created!',
+  'message_post_updated': 'Post updated!',
+  'message_post_deleted': 'Post deleted!',
+  'text_btn_update': 'Update',
+  'text_btn_delete': 'Delete',
 };

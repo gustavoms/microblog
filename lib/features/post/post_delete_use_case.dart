@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:microblog/features/post/exceptions/post_exception.dart';
 import 'package:microblog/features/post/post_repository.dart';
 
-class PostCreateUseCase {
+class PostDeleteUseCase {
   final IPostRepository repository;
 
-  PostCreateUseCase({
+  PostDeleteUseCase({
     required this.repository,
   });
 
