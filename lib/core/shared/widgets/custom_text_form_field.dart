@@ -9,6 +9,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final int? maxLines;
   final int? minLines;
+  final TextInputAction? textInputAction;
+  final Function(String)? onFieldSubmitted;
 
   const CustomTextFormField({
     Key? key,
@@ -20,6 +22,8 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.maxLines,
     this.minLines,
+    this.textInputAction,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   @override
@@ -35,6 +39,8 @@ class CustomTextFormField extends StatelessWidget {
       controller: textEditingController,
       validator: validator,
       obscureText: obscureText,
+      textInputAction: TextInputAction.done,
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 }

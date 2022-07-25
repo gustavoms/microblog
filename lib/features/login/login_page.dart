@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_page.dart';
-import 'package:microblog/core/shared/assets_const.dart';
 import 'package:microblog/core/shared/widgets/custom_button.dart';
 import 'package:microblog/core/shared/widgets/custom_text_form_field.dart';
 import 'package:microblog/core/theme/app_theme.dart';
@@ -15,6 +14,7 @@ class LoginPage extends BasePage<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -56,6 +56,12 @@ class LoginPage extends BasePage<LoginController> {
                               }
 
                               return null;
+                            },
+                            textInputAction: TextInputAction.done,
+                            onFieldSubmitted: (value) {
+                              if (_formKey.currentState!.validate()) {
+                                controller.onLogin();
+                              }
                             },
                             obscureText: true,
                           ),
