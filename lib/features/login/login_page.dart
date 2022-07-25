@@ -14,6 +14,7 @@ class LoginPage extends BasePage<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -28,6 +29,11 @@ class LoginPage extends BasePage<LoginController> {
                       padding: const EdgeInsets.all(kDefPadding),
                       child: Column(
                         children: [
+                          Obx(
+                            () => Image.asset(
+                              controller.assetLogo,
+                            ),
+                          ),
                           CustomTextFormField(
                             hintText: 'hint_input_user'.tr,
                             textEditingController:
@@ -50,6 +56,12 @@ class LoginPage extends BasePage<LoginController> {
                               }
 
                               return null;
+                            },
+                            textInputAction: TextInputAction.done,
+                            onFieldSubmitted: (value) {
+                              if (_formKey.currentState!.validate()) {
+                                controller.onLogin();
+                              }
                             },
                             obscureText: true,
                           ),

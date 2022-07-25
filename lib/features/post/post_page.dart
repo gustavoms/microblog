@@ -16,7 +16,9 @@ class PostPage extends BasePage<PostController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        elevation: 0,
         title: Text('post_title'.tr),
       ),
       body: SafeArea(
@@ -43,6 +45,14 @@ class PostPage extends BasePage<PostController> {
                           }
 
                           return null;
+                        },
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (value) {
+                          if (_formKey.currentState!.validate()) {
+                            controller.parameters.isEditing
+                                ? controller.updatePost()
+                                : controller.createPost();
+                          }
                         },
                       ),
                     ],

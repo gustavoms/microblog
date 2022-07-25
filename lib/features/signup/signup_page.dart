@@ -14,7 +14,9 @@ class SignupPage extends BasePage<SignupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        elevation: 0,
         title: Text('signup_title'.tr),
       ),
       body: SafeArea(
@@ -87,6 +89,12 @@ class SignupPage extends BasePage<SignupController> {
                           }
 
                           return null;
+                        },
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (value) {
+                          if (_formKey.currentState!.validate()) {
+                            controller.onSignup();
+                          }
                         },
                         obscureText: true,
                       ),
