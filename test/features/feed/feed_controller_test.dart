@@ -5,6 +5,8 @@ import 'package:microblog/core/data/database.dart';
 import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/core/router/router.dart';
 import 'package:microblog/features/feed/feed_controller.dart';
+import 'package:microblog/features/post/data/post_entity.dart';
+import 'package:microblog/features/post/data/post_response.dart';
 import 'package:microblog/features/post/exceptions/post_exception.dart';
 import 'package:microblog/features/post/post_find_all_use_case.dart';
 import 'package:microblog/features/post/post_repository.dart';
@@ -27,7 +29,6 @@ void main() {
     final MockIRouter router = MockIRouter();
     final MockPostFindAllUseCase postFindAllUseCase = MockPostFindAllUseCase();
     final MockIStorage storage = MockIStorage();
-    final MockIPostRepository postRepository = MockIPostRepository();
 
     tearDown(() {
       Get.reset();
@@ -70,6 +71,37 @@ void main() {
 
       await controller.reload();
       verify(router.showSnackbarError(message: anyNamed('message'))).called(1);
+    });
+
+    test('should be success reload fun', () async {
+      when(postFindAllUseCase.call()).thenAnswer(
+        (_) => Future.value(
+          right(
+            PostResponse(
+              posts: [
+                PostEntity(
+                  id: 1,
+                  message: 'message',
+                  userId: 1,
+                  date: DateTime.now(),
+                  user: 'user',
+                  photo: 'photo',
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      final controller = FeedController(
+        router: router,
+        storage: storage,
+        postFindAllUseCase: postFindAllUseCase,
+      );
+
+      await controller.reload();
+
+      expect(controller.feedPosts.length, 1);
     });
   });
 }

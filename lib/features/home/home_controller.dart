@@ -34,10 +34,18 @@ class HomeController extends BaseController<HomeParameters> {
 
   @override
   onReady() async {
-    userName = await storage.getUserName();
-    userEmail = await storage.getUserEmail();
+    await getUserEmail();
+    await getUserName();
     darkMode = parameters?.darkMode ?? false;
     super.onReady();
+  }
+
+  Future<void> getUserName() async {
+    userName = await storage.getUserName();
+  }
+
+  Future<void> getUserEmail() async {
+    userEmail = await storage.getUserEmail();
   }
 
   changePage(int index) async {

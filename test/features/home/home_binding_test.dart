@@ -4,8 +4,6 @@ import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/features/home/home_binding.dart';
 import 'package:microblog/features/home/home_controller.dart';
 
-import '../feed/feed_controller_test.mocks.dart';
-
 void main() {
   test('should be fine instantiated dependencies', () {
     Get.put(Storage());

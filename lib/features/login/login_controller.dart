@@ -17,7 +17,7 @@ class LoginController extends BaseController<LoginParameters> {
 
   final LoginExecuteUseCase loginExecuteUseCase;
   final HomeEnableDarkModeUseCase homeEnableDarkModeUseCase;
-  late final bool darkMode;
+  bool? darkMode;
 
   LoginController({
     required router,
@@ -41,6 +41,11 @@ class LoginController extends BaseController<LoginParameters> {
 
   @override
   onReady() async {
+    await enableDarkTheme();
+    super.onReady();
+  }
+
+  Future<void> enableDarkTheme() async {
     (await homeEnableDarkModeUseCase()).fold(
       (l) => router.showSnackbarError(message: l.cause),
       (r) {
@@ -48,7 +53,6 @@ class LoginController extends BaseController<LoginParameters> {
         assetLogo = r ? assetsLogoWhite : assetsLogo;
       },
     );
-    super.onReady();
   }
 
   Future<void> onLogin() async {
@@ -67,7 +71,7 @@ class LoginController extends BaseController<LoginParameters> {
           await router.startHomePage(
             off: true,
             parameters: HomeParameters(
-              darkMode: darkMode,
+              darkMode: darkMode ?? false,
             ),
           );
         }
