@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/core/router/router.dart';
-import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/feed/data/feed_entity.dart';
 import 'package:microblog/features/feed/data/feed_parameters.dart';
 import 'package:microblog/features/post/data/post_entity.dart';
@@ -15,7 +14,7 @@ class FeedController extends BaseController<FeedParameters> {
   RxList<FeedEntity> get feedPosts => _feedPosts;
 
   final PostFindAllUseCase postFindAllUseCase;
-  final Storage storage;
+  final IStorage storage;
   int? currentUserId;
 
   FeedController({
@@ -58,7 +57,7 @@ class FeedController extends BaseController<FeedParameters> {
     (await postFindAllUseCase()).fold(
       (l) {
         loading = false;
-        showSnackbarError(message: l.cause);
+        router.showSnackbarError(message: l.cause);
       },
       (r) {
         loading = false;

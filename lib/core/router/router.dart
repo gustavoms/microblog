@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/router/pages.dart';
 import 'package:microblog/features/feed/data/feed_parameters.dart';
@@ -33,6 +35,12 @@ abstract class IRouter {
     bool closeOverlays = false,
     bool canPop = true,
     int? id,
+  });
+  SnackbarController showSnackbarSuccess({
+    required String message,
+  });
+  SnackbarController showSnackbarError({
+    required String message,
   });
 }
 
@@ -151,6 +159,38 @@ class RouterImpl implements IRouter {
     return await Get.toNamed(
       Routes.POST,
       arguments: parameters,
+    );
+  }
+
+  @override
+  SnackbarController showSnackbarError({
+    required String message,
+  }) {
+    return Get.snackbar(
+      'snackbar_error'.tr,
+      message,
+      icon: const Icon(
+        Icons.error_outline_rounded,
+        color: Colors.red,
+      ),
+      isDismissible: true,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
+
+  @override
+  SnackbarController showSnackbarSuccess({
+    required String message,
+  }) {
+    return Get.snackbar(
+      'snackbar_success'.tr,
+      message,
+      icon: const Icon(
+        Icons.check_circle_outline_rounded,
+        color: Colors.green,
+      ),
+      isDismissible: true,
+      snackPosition: SnackPosition.BOTTOM,
     );
   }
 }

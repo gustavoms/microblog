@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/shared/assets_const.dart';
-import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/home/home_parameters.dart';
 import 'package:microblog/features/login/data/login_entity.dart';
@@ -43,7 +42,7 @@ class LoginController extends BaseController<LoginParameters> {
   @override
   onReady() async {
     (await homeEnableDarkModeUseCase()).fold(
-      (l) => showSnackbarError(message: l.cause),
+      (l) => router.showSnackbarError(message: l.cause),
       (r) {
         darkMode = r;
         assetLogo = r ? assetsLogoWhite : assetsLogo;
@@ -60,7 +59,7 @@ class LoginController extends BaseController<LoginParameters> {
       ),
     ))
         .fold(
-      (l) => showSnackbarError(
+      (l) => router.showSnackbarError(
         message: l.cause,
       ),
       (r) async {

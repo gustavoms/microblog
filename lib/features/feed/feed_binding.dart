@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:microblog/core/data/database.dart';
+import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/core/router/router.dart';
 import 'package:microblog/features/feed/feed_controller.dart';
 import 'package:microblog/features/post/post_find_all_use_case.dart';
@@ -16,7 +17,7 @@ class FeedBinding implements Bindings {
             database: MicroblogDatabase(),
           ),
         ),
-        storage: Get.find(),
+        storage: Get.find<Storage>(),
       ),
     );
   }
