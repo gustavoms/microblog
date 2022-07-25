@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/data/api.dart';

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:microblog/core/router/router.dart';
 
 abstract class BaseController<TParams> extends GetxController {
-  TParams get parameters => Get.arguments;
+  TParams? get parameters => Get.arguments;
 
   final IRouter router;
   BaseController({

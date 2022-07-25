@@ -31,7 +31,7 @@ class PostController extends BaseController<PostParameters> {
   @override
   onInit() {
     textPostController = TextEditingController(
-      text: parameters.post?.message ?? '',
+      text: parameters?.post?.message ?? '',
     );
     super.onInit();
   }
@@ -67,7 +67,7 @@ class PostController extends BaseController<PostParameters> {
   Future<void> updatePost() async {
     (await postUpdateUseCase(
       data: PostUpdateRequest(
-        postId: parameters.post?.id ?? 0,
+        postId: parameters?.post?.id ?? 0,
         userId: currentUserId,
         message: textPostController.text.trim(),
       ),
@@ -83,7 +83,7 @@ class PostController extends BaseController<PostParameters> {
 
   Future<void> deletePost() async {
     (await postDeleteUseCase(
-      id: parameters.post?.id ?? 0,
+      id: parameters?.post?.id ?? 0,
     ))
         .fold(
       (l) => showSnackbarError(message: l.cause),

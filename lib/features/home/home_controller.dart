@@ -37,7 +37,7 @@ class HomeController extends BaseController<HomeParameters> {
   onReady() async {
     userName = await storage.getUserName();
     userEmail = await storage.getUserEmail();
-    darkMode = parameters.darkMode;
+    darkMode = parameters?.darkMode ?? false;
     super.onReady();
   }
 

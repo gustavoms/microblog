@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:microblog/core/data/database.dart';
-import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/core/router/router.dart';
 import 'package:microblog/features/post/post_controller.dart';
 import 'package:microblog/features/post/post_create_use_case.dart';
@@ -14,7 +13,7 @@ class PostBinding implements Bindings {
     Get.lazyPut<PostController>(
       () => PostController(
         router: RouterImpl(),
-        storage: Storage(),
+        storage: Get.find(),
         postCreateUseCase: PostCreateUseCase(
           repository: PostRepository(
             database: MicroblogDatabase(),

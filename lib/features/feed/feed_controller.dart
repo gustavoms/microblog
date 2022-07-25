@@ -16,7 +16,7 @@ class FeedController extends BaseController<FeedParameters> {
 
   final PostFindAllUseCase postFindAllUseCase;
   final Storage storage;
-  late final int currentUserId;
+  int? currentUserId;
 
   FeedController({
     required IRouter router,
@@ -26,9 +26,13 @@ class FeedController extends BaseController<FeedParameters> {
 
   @override
   void onReady() async {
-    currentUserId = await storage.getUserId();
+    await loadCurrentUserId();
     await reload();
     super.onReady();
+  }
+
+  Future<void> loadCurrentUserId() async {
+    currentUserId = await storage.getUserId();
   }
 
   Future<void> editPost({
