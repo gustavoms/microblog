@@ -19,7 +19,6 @@ void main() {
   group('signup controller test cases', () {
     final mockSignupExecuteUseCase = MockSignupExecuteUseCase();
     final mockRouter = MockIRouter();
-    final mockSnackbarController = MockSnackbarController();
 
     tearDown(() {
       Get.reset();

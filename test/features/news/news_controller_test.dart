@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:microblog/core/data/api.dart';
 import 'package:microblog/core/router/router.dart';
-import 'package:microblog/features/news/data/news_entity.dart';
 import 'package:microblog/features/news/data/news_response.dart';
 import 'package:microblog/features/news/news_controller.dart';
 import 'package:microblog/features/news/news_find_all_use_case.dart';

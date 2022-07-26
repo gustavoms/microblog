@@ -1,10 +1,7 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/data/database.dart';
 import 'package:microblog/features/login/data/login_request.dart';
-import 'package:microblog/features/login/data/login_response.dart';
-import 'package:microblog/features/login/exceptions/login_execute_exception.dart';
 import 'package:microblog/features/login/login_repository.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -27,17 +24,6 @@ void main() {
       user: 'test',
       password: 'test',
     );
-    final loginResponse = LoginResponse(
-      success: true,
-      user: 'test',
-      email: 'test',
-      id: 0,
-    );
-    final loginExecuteException = LoginExecuteException(
-      cause: 'fail',
-    );
-    final loginExecuteResponse = right(loginResponse);
-    final loginExecuteExceptionResponse = left(loginExecuteException);
 
     tearDown(() {
       Get.reset();
