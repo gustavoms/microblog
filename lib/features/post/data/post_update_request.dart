@@ -7,8 +7,10 @@ class PostUpdateRequest extends PostCreateRequest {
     required this.postId,
     required int userId,
     required String message,
+    required String date,
   }) : super(
           userId: userId,
           message: message,
+          date: date,
         );
 }

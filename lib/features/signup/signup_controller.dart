@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
+import 'package:microblog/core/router/router.dart';
 import 'package:microblog/features/signup/data/signup_entity.dart';
 import 'package:microblog/features/signup/data/signup_parameters.dart';
 import 'package:microblog/features/signup/signup_execute_use_case.dart';
@@ -14,7 +15,7 @@ class SignupController extends BaseController<SignupParameters> {
   final SignupExecuteUseCase signupExecuteUseCase;
 
   SignupController({
-    required router,
+    required IRouter router,
     required this.signupExecuteUseCase,
   }) : super(router: router);
 
@@ -50,7 +51,7 @@ class SignupController extends BaseController<SignupParameters> {
       ),
       (r) async {
         if (r.success) {
-          await router.goBack();
+          await router.goBack(closeOverlays: true);
           router.showSnackbarSuccess(message: 'signup_successful'.tr);
         }
       },

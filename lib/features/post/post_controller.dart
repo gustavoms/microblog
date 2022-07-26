@@ -13,7 +13,7 @@ import 'package:microblog/features/post/post_update_use_case.dart';
 class PostController extends BaseController<PostParameters> {
   late final TextEditingController textPostController;
 
-  late final int currentUserId;
+  int? currentUserId;
   final IStorage storage;
   final PostCreateUseCase postCreateUseCase;
   final PostUpdateUseCase postUpdateUseCase;
@@ -50,8 +50,9 @@ class PostController extends BaseController<PostParameters> {
   Future<void> createPost() async {
     (await postCreateUseCase(
       data: PostCreateRequest(
-        userId: currentUserId,
+        userId: currentUserId ?? 0,
         message: textPostController.text.trim(),
+        date: DateTime.now().toIso8601String(),
       ),
     ))
         .fold(
@@ -67,8 +68,9 @@ class PostController extends BaseController<PostParameters> {
     (await postUpdateUseCase(
       data: PostUpdateRequest(
         postId: parameters?.post?.id ?? 0,
-        userId: currentUserId,
+        userId: currentUserId ?? 0,
         message: textPostController.text.trim(),
+        date: DateTime.now().toIso8601String(),
       ),
     ))
         .fold(

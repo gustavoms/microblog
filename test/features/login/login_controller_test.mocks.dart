@@ -5,7 +5,7 @@
 import 'dart:async' as _i8;
 
 import 'package:dartz/dartz.dart' as _i4;
-import 'package:flutter/cupertino.dart' as _i5;
+import 'package:flutter/material.dart' as _i5;
 import 'package:get/get.dart' as _i2;
 import 'package:microblog/core/data/storage.dart' as _i3;
 import 'package:microblog/core/router/router.dart' as _i7;

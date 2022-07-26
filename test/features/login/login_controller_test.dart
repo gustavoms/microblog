@@ -26,7 +26,7 @@ import 'login_controller_test.mocks.dart';
   LoginExecuteUseCase,
 ])
 void main() {
-  group('feed controller testing cases', () {
+  group('login controller testing cases', () {
     final MockIRouter router = MockIRouter();
     final MockHomeEnableDarkModeUseCase homeEnableDarkModeUseCase =
         MockHomeEnableDarkModeUseCase();
