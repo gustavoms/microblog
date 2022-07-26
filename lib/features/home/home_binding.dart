@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:microblog/core/data/storage.dart';
 import 'package:microblog/core/router/router.dart';
 import 'package:microblog/features/home/home_controller.dart';
 import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
@@ -9,9 +10,9 @@ class HomeBinding implements Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(
         router: RouterImpl(),
-        storage: Get.find(),
+        storage: Get.find<Storage>(),
         homeEnableDarkModeUseCase: HomeEnableDarkModeUseCase(
-          storage: Get.find(),
+          storage: Get.find<Storage>(),
         ),
       ),
     );

@@ -20,6 +20,13 @@ flutter pub get;
 flutter run lib/main.dart
 ```
 
+### **2.** Testes
+
+```shell
+dart run build_runner build;
+flutter test;
+```
+
 
 <br />
 
@@ -32,7 +39,7 @@ flutter run lib/main.dart
 | **sqflite**     | Plugin SQlite para flutter                                  | Facilitar a utilização do SQLite para salvar dados locais
 | **intl**     | Pacote de internacionalização                         | Utilização de classes de conversão de data                                                        |
 | **get_storage**     | Storage chave-valor para armazenamento rápido de configurações                                     | Facilitar registro e acesso de configurações e informações operacionais importantes no app.
-
+| **mockito**     | Mockito ferramenta de testes                                     | Facilitar a geração de mocks de funções e classes para os testes.
 
 <br />
 

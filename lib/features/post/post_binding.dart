@@ -14,7 +14,7 @@ class PostBinding implements Bindings {
     Get.lazyPut<PostController>(
       () => PostController(
         router: RouterImpl(),
-        storage: Storage(),
+        storage: Get.find<Storage>(),
         postCreateUseCase: PostCreateUseCase(
           repository: PostRepository(
             database: MicroblogDatabase(),

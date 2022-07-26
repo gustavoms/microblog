@@ -8,7 +8,7 @@ import 'package:microblog/features/login/login_repository.dart';
 
 class LoginExecuteUseCase {
   final ILoginRepository repository;
-  final Storage storage;
+  final IStorage storage;
 
   LoginExecuteUseCase({
     required this.repository,

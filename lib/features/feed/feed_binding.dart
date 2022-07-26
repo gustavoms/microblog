@@ -17,7 +17,7 @@ class FeedBinding implements Bindings {
             database: MicroblogDatabase(),
           ),
         ),
-        storage: Storage(),
+        storage: Get.find<Storage>(),
       ),
     );
   }

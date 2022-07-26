@@ -49,7 +49,7 @@ class PostPage extends BasePage<PostController> {
                         textInputAction: TextInputAction.done,
                         onFieldSubmitted: (value) {
                           if (_formKey.currentState!.validate()) {
-                            controller.parameters.isEditing
+                            (controller.parameters?.isEditing ?? false)
                                 ? controller.updatePost()
                                 : controller.createPost();
                           }
@@ -64,7 +64,7 @@ class PostPage extends BasePage<PostController> {
                 child: Column(
                   children: [
                     Visibility(
-                      visible: controller.parameters.isEditing,
+                      visible: (controller.parameters?.isEditing ?? false),
                       child: Row(
                         children: [
                           Expanded(
@@ -85,12 +85,12 @@ class PostPage extends BasePage<PostController> {
                           child: CustomButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                controller.parameters.isEditing
+                                (controller.parameters?.isEditing ?? false)
                                     ? controller.updatePost()
                                     : controller.createPost();
                               }
                             },
-                            text: controller.parameters.isEditing
+                            text: (controller.parameters?.isEditing ?? false)
                                 ? 'text_btn_update'.tr
                                 : 'text_btn_create'.tr,
                           ),

@@ -6,7 +6,7 @@ import 'package:microblog/core/theme/app_theme.dart';
 import 'package:microblog/features/home/exceptions/home_enable_dark_mode_exception.dart';
 
 class HomeEnableDarkModeUseCase {
-  final Storage storage;
+  final IStorage storage;
 
   HomeEnableDarkModeUseCase({
     required this.storage,

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/data/storage.dart';
-import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/home/home_parameters.dart';
 import 'package:microblog/features/post/data/post_parameters.dart';
@@ -23,7 +22,7 @@ class HomeController extends BaseController<HomeParameters> {
   set darkMode(value) => _darkMode.value = value;
   get darkMode => _darkMode.value;
 
-  final Storage storage;
+  final IStorage storage;
 
   final HomeEnableDarkModeUseCase homeEnableDarkModeUseCase;
 
@@ -35,10 +34,18 @@ class HomeController extends BaseController<HomeParameters> {
 
   @override
   onReady() async {
-    userName = await storage.getUserName();
-    userEmail = await storage.getUserEmail();
-    darkMode = parameters.darkMode;
+    await getUserEmail();
+    await getUserName();
+    darkMode = parameters?.darkMode ?? false;
     super.onReady();
+  }
+
+  Future<void> getUserName() async {
+    userName = await storage.getUserName();
+  }
+
+  Future<void> getUserEmail() async {
+    userEmail = await storage.getUserEmail();
   }
 
   changePage(int index) async {
@@ -62,7 +69,7 @@ class HomeController extends BaseController<HomeParameters> {
       enable: value,
     ))
         .fold(
-      (l) => showSnackbarError(message: l.cause),
+      (l) => router.showSnackbarError(message: l.cause),
       (r) => {
         darkMode = r,
       },

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/router/router.dart';
-import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/news/data/news_entity.dart';
 import 'package:microblog/features/news/data/news_parameters.dart';
 import 'package:microblog/features/news/data/news_request.dart';
@@ -30,7 +29,7 @@ class NewsController extends BaseController<NewsParameters> {
     (await newsFindAllUseCase(data: NewsRequest())).fold(
       (l) {
         loading = false;
-        showSnackbarError(
+        router.showSnackbarError(
           message: l.cause,
         );
       },

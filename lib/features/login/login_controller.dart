@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:microblog/core/abstractions/base_controller.dart';
 import 'package:microblog/core/shared/assets_const.dart';
-import 'package:microblog/core/shared/global_actions.dart';
 import 'package:microblog/features/home/home_enable_dark_mode_use_case.dart';
 import 'package:microblog/features/home/home_parameters.dart';
 import 'package:microblog/features/login/data/login_entity.dart';
@@ -18,7 +17,7 @@ class LoginController extends BaseController<LoginParameters> {
 
   final LoginExecuteUseCase loginExecuteUseCase;
   final HomeEnableDarkModeUseCase homeEnableDarkModeUseCase;
-  late final bool darkMode;
+  bool? darkMode;
 
   LoginController({
     required router,
@@ -42,14 +41,18 @@ class LoginController extends BaseController<LoginParameters> {
 
   @override
   onReady() async {
+    await enableDarkTheme();
+    super.onReady();
+  }
+
+  Future<void> enableDarkTheme() async {
     (await homeEnableDarkModeUseCase()).fold(
-      (l) => showSnackbarError(message: l.cause),
+      (l) => router.showSnackbarError(message: l.cause),
       (r) {
         darkMode = r;
         assetLogo = r ? assetsLogoWhite : assetsLogo;
       },
     );
-    super.onReady();
   }
 
   Future<void> onLogin() async {
@@ -60,7 +63,7 @@ class LoginController extends BaseController<LoginParameters> {
       ),
     ))
         .fold(
-      (l) => showSnackbarError(
+      (l) => router.showSnackbarError(
         message: l.cause,
       ),
       (r) async {
@@ -68,7 +71,7 @@ class LoginController extends BaseController<LoginParameters> {
           await router.startHomePage(
             off: true,
             parameters: HomeParameters(
-              darkMode: darkMode,
+              darkMode: darkMode ?? false,
             ),
           );
         }

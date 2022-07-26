@@ -42,7 +42,7 @@ class PostRepository extends IPostRepository {
         [
           data.userId,
           data.message,
-          DateTime.now().toIso8601String(),
+          data.date,
         ],
       );
 

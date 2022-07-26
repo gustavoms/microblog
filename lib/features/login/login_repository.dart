@@ -50,10 +50,18 @@ class LoginRepository implements ILoginRepository {
       return right(
         LoginResponse(
           success: true,
-          user: (byUsername[0]['name'] ?? byEmail[0]['name']).toString(),
-          email: (byUsername[0]['email'] ?? byEmail[0]['email']).toString(),
-          id: int.tryParse(
-                  (byUsername[0]['id'] ?? byEmail[0]['id']).toString()) ??
+          user: (byUsername.isNotEmpty
+                  ? byUsername[0]['name']
+                  : byEmail[0]['name'])
+              .toString(),
+          email: (byUsername.isNotEmpty
+                  ? byUsername[0]['email']
+                  : byEmail[0]['email'])
+              .toString(),
+          id: int.tryParse((byUsername.isNotEmpty
+                      ? byUsername[0]['id']
+                      : byEmail[0]['id'])
+                  .toString()) ??
               0,
         ),
       );
